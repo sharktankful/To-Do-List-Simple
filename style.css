@@ -1,0 +1,17 @@
+body {
+    background-color: lightblue;
+}
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.task-box {
+    background-color: white;
+    border: 5px solid royalblue;
+    border-radius: 10px;
+    box-shadow: 0 0 30px grey;
+    padding-left: 20px;
+    width: 50%;
+    height: 200px;
+}
