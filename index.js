@@ -23,8 +23,13 @@ function displayTasks() {
     myTasks.forEach(task => {
         // Creates list item and appends task to it
         const listItem = document.createElement("li");
-        listItem.textContent = task;
         listItem.classList.add("list-item")
+
+         // Creates div for task text and appends it to the list item
+        const taskText = document.createElement("div");
+        taskText.textContent = task;
+        taskText.classList.add("task-text");
+        listItem.appendChild(taskText);
 
         // Creates button and adds it to each 'li'
         const deleteButton = document.createElement("button");

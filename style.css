@@ -57,6 +57,7 @@ ul {
 
 .delete-button {
     background-color: rgb(203, 0, 0);
+    margin-left: 10px;
 }
 
 .list-item {
@@ -70,4 +71,9 @@ ul {
     align-items: center;
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+.task-text {
+    width: 77%;
+    word-wrap: break-word;
 }
