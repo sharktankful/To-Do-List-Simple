@@ -1,31 +1,55 @@
 // Event Listener
-const tasks = []
-const form = document.getElementById("form-submit");
+const myTasks = []
+const formSubmit = document.getElementById("form-submit");
 const taskInput = document.getElementById("task-input")
 const taskList = document.getElementById("task-list")
 
-
-function sendAlert(event) {
+function storeTask(event) {
+    // Prevents page reload
     event.preventDefault();
-
-    const currentTask = taskInput.value;
-    tasks.push(currentTask)
+    
+    const task = taskInput.value;
+    myTasks.push(task);
 
     taskInput.value = "";
-
-    updateTaskList();
-
+    
+    displayTasks();
 
 };
 
-function updateTaskList() {
-    taskList.innerHTML = "";
+function displayTasks() {
+    taskList.innerHTML = ""
 
-    tasks.forEach(task => {
+    myTasks.forEach(task => {
+        // Creates list item and appends task to it
         const listItem = document.createElement("li");
         listItem.textContent = task;
+        listItem.classList.add("list-item")
+
+        // Creates button and adds it to each 'li'
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete-button")
+        
+        listItem.appendChild(deleteButton);
+
+        // Deletes Task from list
+        deleteButton.addEventListener("click", () => deleteTask(task));
+
+        // Adds task to unordered list
         taskList.appendChild(listItem);
-    });
+    })
 }
 
-form.addEventListener("submit", sendAlert);
+function deleteTask(task) {
+    // Gets index of task in array
+    const taskIndex = myTasks.indexOf(task);
+
+    // Removes task at specific index
+    if (taskIndex !== -1) {
+        myTasks.splice(taskIndex, 1);
+        displayTasks();
+    };
+}
+
+formSubmit.addEventListener("submit", storeTask)
