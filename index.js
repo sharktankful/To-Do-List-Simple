@@ -8,11 +8,14 @@ function storeTask(event) {
     // Prevents page reload
     event.preventDefault();
     
+    // Grabs task and pushes it to myTasks array
     const task = taskInput.value;
     myTasks.push(task);
 
+    // Clears input field
     taskInput.value = "";
     
+    // Shows task in list
     displayTasks();
 
 };
